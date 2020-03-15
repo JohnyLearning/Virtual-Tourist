@@ -10,12 +10,12 @@
 		3A7B09DE241EE10E006BABBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B09DD241EE10E006BABBE /* AppDelegate.swift */; };
 		3A7B09E0241EE10E006BABBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B09DF241EE10E006BABBE /* SceneDelegate.swift */; };
 		3A7B09E2241EE10E006BABBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B09E1241EE10E006BABBE /* ViewController.swift */; };
-		3A7B09E5241EE10E006BABBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B09E3241EE10E006BABBE /* Main.storyboard */; };
 		3A7B09E8241EE10E006BABBE /* Virtual_Tourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B09E6241EE10E006BABBE /* Virtual_Tourist.xcdatamodeld */; };
 		3A7B09EA241EE10F006BABBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B09E9241EE10F006BABBE /* Assets.xcassets */; };
 		3A7B09ED241EE10F006BABBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B09EB241EE10F006BABBE /* LaunchScreen.storyboard */; };
 		3A7B09F8241EE10F006BABBE /* Virtual_TouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B09F7241EE10F006BABBE /* Virtual_TouristTests.swift */; };
 		3A7B0A03241EE10F006BABBE /* Virtual_TouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B0A02241EE10F006BABBE /* Virtual_TouristUITests.swift */; };
+		3A7B0A15241EE740006BABBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B0A13241EE740006BABBE /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		3A7B09DD241EE10E006BABBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A7B09DF241EE10E006BABBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3A7B09E1241EE10E006BABBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3A7B09E4241EE10E006BABBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A7B09E7241EE10E006BABBE /* Virtual_Tourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Virtual_Tourist.xcdatamodel; sourceTree = "<group>"; };
 		3A7B09E9241EE10F006BABBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A7B09EC241EE10F006BABBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		3A7B09FE241EE10F006BABBE /* Virtual TouristUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Virtual TouristUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B0A02241EE10F006BABBE /* Virtual_TouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virtual_TouristUITests.swift; sourceTree = "<group>"; };
 		3A7B0A04241EE10F006BABBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A7B0A14241EE740006BABBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +101,11 @@
 		3A7B09DC241EE10E006BABBE /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				3A7B0A10241EE15D006BABBE /* Storyboards */,
 				3A7B09DD241EE10E006BABBE /* AppDelegate.swift */,
 				3A7B09DF241EE10E006BABBE /* SceneDelegate.swift */,
 				3A7B09E1241EE10E006BABBE /* ViewController.swift */,
-				3A7B09E3241EE10E006BABBE /* Main.storyboard */,
 				3A7B09E9241EE10F006BABBE /* Assets.xcassets */,
-				3A7B09EB241EE10F006BABBE /* LaunchScreen.storyboard */,
 				3A7B09EE241EE10F006BABBE /* Info.plist */,
 				3A7B09E6241EE10E006BABBE /* Virtual_Tourist.xcdatamodeld */,
 			);
@@ -129,6 +128,15 @@
 				3A7B0A04241EE10F006BABBE /* Info.plist */,
 			);
 			path = "Virtual TouristUITests";
+			sourceTree = "<group>";
+		};
+		3A7B0A10241EE15D006BABBE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3A7B0A13241EE740006BABBE /* Main.storyboard */,
+				3A7B09EB241EE10F006BABBE /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,9 +243,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7B0A15241EE740006BABBE /* Main.storyboard in Resources */,
 				3A7B09ED241EE10F006BABBE /* LaunchScreen.storyboard in Resources */,
 				3A7B09EA241EE10F006BABBE /* Assets.xcassets in Resources */,
-				3A7B09E5241EE10E006BABBE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,20 +309,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3A7B09E3241EE10E006BABBE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3A7B09E4241EE10E006BABBE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3A7B09EB241EE10F006BABBE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3A7B09EC241EE10F006BABBE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3A7B0A13241EE740006BABBE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A7B0A14241EE740006BABBE /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
