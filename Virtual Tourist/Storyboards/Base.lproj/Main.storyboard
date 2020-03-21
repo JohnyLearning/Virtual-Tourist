@@ -10,13 +10,17 @@
         <!--Locations-->
         <scene sceneID="C3b-th-E3Y">
             <objects>
-                <viewController id="flF-Hn-L2S" sceneMemberID="viewController">
+                <viewController id="flF-Hn-L2S" customClass="MapViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y2C-0K-WQA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nxO-Et-HWQ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="nM5-wF-t2Y" appends="YES" id="HSH-Yc-U9D"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -29,8 +33,16 @@
                         <viewLayoutGuide key="safeArea" id="S5I-lO-1rs"/>
                     </view>
                     <navigationItem key="navigationItem" title="Locations" id="82v-oN-NI4"/>
+                    <connections>
+                        <outlet property="mapView" destination="nxO-Et-HWQ" id="QV3-WR-HxW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU1-rB-c5v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="nM5-wF-t2Y">
+                    <connections>
+                        <action selector="addPin:" destination="flF-Hn-L2S" id="Vni-dh-Lyl"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-752.17391304347836" y="-346.20535714285711"/>
         </scene>
