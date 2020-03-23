@@ -103,8 +103,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwB-H5-zgA">
-                                <rect key="frame" x="20" y="811" width="374" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwB-H5-zgA">
+                                <rect key="frame" x="20" y="823" width="374" height="39"/>
                                 <color key="backgroundColor" red="0.95697838068008423" green="0.96063560247421265" blue="0.96863096952438354" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="New Collection"/>
@@ -158,21 +158,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tF-Me-pAD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1776" y="-346"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="fJc-Pc-i7N">
-            <objects>
-                <viewController id="tBL-7Y-6FD" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="l84-Xc-7jQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="TJs-qm-7kD"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="22T-sR-0Gn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-313" y="-1020"/>
         </scene>
     </scenes>
 </document>
