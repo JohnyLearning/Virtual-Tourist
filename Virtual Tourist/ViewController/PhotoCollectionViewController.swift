@@ -13,6 +13,8 @@ import CoreData
 
 class PhotoCollectionViewController: UIViewController {
     
+    static let space: CGFloat = 1.0
+    
     var selectedIndexes = [IndexPath]()
     var insertedIndexPaths: [IndexPath]!
     var deletedIndexPaths: [IndexPath]!
@@ -222,7 +224,7 @@ extension PhotoCollectionViewController: NSFetchedResultsControllerDelegate {
 extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = floor (collectionView.bounds.width/3.0)
+        let yourWidth = floor ((collectionView.bounds.width - PhotoCollectionViewController.space) / 3.0)
         let yourHeight = yourWidth
 
         return CGSize(width: yourWidth, height: yourHeight)
@@ -233,11 +235,11 @@ extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return PhotoCollectionViewController.space
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return PhotoCollectionViewController.space
     }
     
 }
