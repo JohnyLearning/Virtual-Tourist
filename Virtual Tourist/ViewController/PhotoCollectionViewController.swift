@@ -97,7 +97,7 @@ extension PhotoCollectionViewController {
 }
 
 // collection view extension
-extension PhotoCollectionViewController: UICollectionViewDataSource {
+extension PhotoCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
@@ -134,14 +134,13 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
         }
         return cell
     }
-}
     
-extension PhotoCollectionViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print (indexPath.item + 1)
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let photoData = fetchedResultsController.object(at: indexPath) as PhotoData
+        CoreDataManager.instance.managedObjectContext.delete(photoData)
+        CoreDataManager.instance.save()
+        return true
     }
-
 }
 
 extension PhotoCollectionViewController: MKMapViewDelegate {
