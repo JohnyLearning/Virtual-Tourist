@@ -20,25 +20,19 @@ class PhotoCollectionViewController: UIViewController {
     
     var locationData: LocationData!
     
+    @IBOutlet weak var collectionView: UICollectionView!
     var fetchedResultsController: NSFetchedResultsController<PhotoData>!
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var mainActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         mapView.delegate = self
-        collectionView.dataSource = self
         initMapLocation()
         setupDataController()
         if let photos = locationData.photos, photos.count == 0 {
             getPhotos()
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        setupPhotosLayout(width: view.bounds.size.width)
     }
     
     private func initMapLocation() {
@@ -53,18 +47,7 @@ class PhotoCollectionViewController: UIViewController {
         mapView.isScrollEnabled = false
         mapView.isZoomEnabled = false
     }
-    
-    private func setupPhotosLayout(width: CGFloat) {
-        let space: CGFloat = 1.0
-        let numberAcross: CGFloat = UIDevice.current.orientation.isLandscape ? 6.0 : 3.0
-        let dimension = floor((width - ((numberAcross - 1) * space)) / numberAcross)
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        collectionView.collectionViewLayout = flowLayout
-    }
-    
+
     private func setupDataController() {
         
         let photosRequest = NSFetchRequest<PhotoData>(entityName: "PhotoData")
@@ -133,8 +116,8 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
             cell.activityIndicator.stopAnimating()
             cell.activityIndicator.isHidden = true
         } else {
-            cell.imageView.image = nil
             if let url = photoData.url {
+                cell.imageView.image = nil
                 cell.activityIndicator.startAnimating()
                 cell.activityIndicator.isHidden = false
                 FlickrApi.downloadImage(imageUrl: url) { data, error in
@@ -142,6 +125,7 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
                         if let imageData = data {
                             photoData.image = imageData as Data
                             CoreDataManager.instance.save()
+                            cell.imageView.image = UIImage(data: photoData.image!)
                         }
                     }
                 }
@@ -231,6 +215,29 @@ extension PhotoCollectionViewController: NSFetchedResultsControllerDelegate {
             }
             
         }, completion: nil)
+    }
+    
+}
+
+extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let yourWidth = floor (collectionView.bounds.width/3.0)
+        let yourHeight = yourWidth
+
+        return CGSize(width: yourWidth, height: yourHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
 }

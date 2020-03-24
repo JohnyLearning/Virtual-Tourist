@@ -52,7 +52,7 @@ class FlickrApi: BaseApi {
         }
     }
     
-class func downloadImage(imageUrl: String, completion: @escaping (_ result: NSData?, _ error: Error?) -> Void) {
+    class func downloadImage(imageUrl: String, completion: @escaping (_ result: NSData?, _ error: Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: Endpoints.downloadImage(imageUrl).url) { data, response, error in
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299, let data = data, error == nil else {
                 DispatchQueue.main.async {
