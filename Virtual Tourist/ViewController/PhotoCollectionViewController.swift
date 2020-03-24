@@ -23,6 +23,8 @@ class PhotoCollectionViewController: UIViewController {
     var locationData: LocationData!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noImages: UILabel!
+    
     var fetchedResultsController: NSFetchedResultsController<PhotoData>!
     
     @IBOutlet weak var mapView: MKMapView!
@@ -80,18 +82,32 @@ extension PhotoCollectionViewController {
             FlickrApi.searchPhotos(longitude: locationData.longitude, latitude: locationData.latitude) { searchResponse, error in
                 DispatchQueue.main.async {
                     if let photos = searchResponse?.photos.photo {
-                        for photo in photos {
-                            let photoData = PhotoData(context: CoreDataManager.instance.managedObjectContext)
-                            photoData.url = photo.thumbnailUrl
-                            photoData.image = nil
-                            photoData.location = locationData
-                            CoreDataManager.instance.save()
+                        if photos.count > 0 {
+                            self.managePhotosVisisbility(hide: false)
+                            for photo in photos {
+                                let photoData = PhotoData(context: CoreDataManager.instance.managedObjectContext)
+                                photoData.url = photo.thumbnailUrl
+                                photoData.image = nil
+                                photoData.location = locationData
+                                CoreDataManager.instance.save()
+                            }
+                        } else {
+                            // no photos
+                            self.managePhotosVisisbility(hide: true)
                         }
+                    } else {
+                        // no photos
+                        self.managePhotosVisisbility(hide: true)
                     }
                     self.indicateMainProgress(hide: true)
                 }
             }
         }
+    }
+    
+    private func managePhotosVisisbility(hide: Bool) {
+        collectionView.isHidden = hide
+        noImages.isHidden = !hide
     }
     
 }

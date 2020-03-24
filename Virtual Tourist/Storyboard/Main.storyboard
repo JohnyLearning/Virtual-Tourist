@@ -70,9 +70,8 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="79h-Sh-WCb">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xbj-iQ-IHa">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xbj-iQ-IHa">
                                 <rect key="frame" x="0.0" y="294" width="414" height="521"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dsf-J9-frf">
                                     <size key="itemSize" width="151" height="152"/>
@@ -110,10 +109,20 @@
                                     <outlet property="delegate" destination="Wyd-kD-1DL" id="eMe-w5-xAB"/>
                                 </connections>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No images found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1So-do-q5f">
+                                <rect key="frame" x="20" y="294" width="374" height="521"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="xbj-iQ-IHa" firstAttribute="leading" secondItem="o1J-GL-ToH" secondAttribute="leading" id="6wv-Fi-J0x"/>
                             <constraint firstItem="0uu-5z-Ph7" firstAttribute="top" secondItem="o1J-GL-ToH" secondAttribute="top" id="9c5-Pv-fgg"/>
+                            <constraint firstItem="LwB-H5-zgA" firstAttribute="top" secondItem="xbj-iQ-IHa" secondAttribute="bottom" constant="8" id="Iou-ii-Uvt"/>
+                            <constraint firstItem="xbj-iQ-IHa" firstAttribute="top" secondItem="0uu-5z-Ph7" secondAttribute="bottom" constant="8" id="Ja7-tV-kks"/>
                             <constraint firstItem="0uu-5z-Ph7" firstAttribute="trailing" secondItem="o1J-GL-ToH" secondAttribute="trailing" id="LZ9-kr-jXb"/>
                             <constraint firstItem="LwB-H5-zgA" firstAttribute="leading" secondItem="o1J-GL-ToH" secondAttribute="leading" constant="20" id="QBv-p3-cX6"/>
                             <constraint firstItem="79h-Sh-WCb" firstAttribute="centerY" secondItem="4IU-JV-guL" secondAttribute="centerY" id="U28-bx-qM0"/>
@@ -121,6 +130,7 @@
                             <constraint firstItem="0uu-5z-Ph7" firstAttribute="leading" secondItem="o1J-GL-ToH" secondAttribute="leading" id="cJj-Kx-uhP"/>
                             <constraint firstItem="o1J-GL-ToH" firstAttribute="bottom" secondItem="LwB-H5-zgA" secondAttribute="bottom" id="g3q-2a-S84"/>
                             <constraint firstItem="o1J-GL-ToH" firstAttribute="trailing" secondItem="LwB-H5-zgA" secondAttribute="trailing" constant="20" id="hZ0-uX-q4V"/>
+                            <constraint firstItem="xbj-iQ-IHa" firstAttribute="trailing" secondItem="o1J-GL-ToH" secondAttribute="trailing" id="y1a-Mj-fqg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o1J-GL-ToH"/>
                     </view>
@@ -129,6 +139,7 @@
                         <outlet property="collectionView" destination="xbj-iQ-IHa" id="1QB-8S-5TM"/>
                         <outlet property="mainActivityIndicator" destination="79h-Sh-WCb" id="Znh-vc-EbO"/>
                         <outlet property="mapView" destination="0uu-5z-Ph7" id="7SE-Vg-CIX"/>
+                        <outlet property="noImages" destination="1So-do-q5f" id="dgA-pf-7eb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QtH-IN-83A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
