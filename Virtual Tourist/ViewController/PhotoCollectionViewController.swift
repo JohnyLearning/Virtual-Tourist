@@ -54,15 +54,15 @@ class PhotoCollectionViewController: UIViewController {
         
         let photosRequest = NSFetchRequest<PhotoData>(entityName: "PhotoData")
         photosRequest.sortDescriptors = []
-        photosRequest.predicate = NSPredicate(format: "location == %@", argumentArray: [locationData!])
+        photosRequest.predicate = NSPredicate(format: "location == %@", locationData)
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: photosRequest, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            print("error during fetching photos: \(error)")
+            print("error getting photos: \(error)")
         }
+        fetchedResultsController.delegate = self
     }
     
     private func indicateMainProgress(hide: Bool) {
@@ -88,7 +88,6 @@ extension PhotoCollectionViewController {
                             CoreDataManager.instance.save()
                         }
                     }
-                    self.setupDataController()
                     self.indicateMainProgress(hide: true)
                 }
             }

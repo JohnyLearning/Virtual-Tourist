@@ -89,11 +89,24 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let location = view.annotation as? MKPointAnnotation {
-            let locationData = LocationData(context: CoreDataManager.instance.managedObjectContext)
-            locationData.latitude = location.coordinate.latitude
-            locationData.longitude = location.coordinate.longitude
-            self.performSegue(withIdentifier: "showPhotos", sender: locationData)
+            if let locationData = retrieveLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) {
+                self.performSegue(withIdentifier: "showPhotos", sender: locationData)
+            }
         }
+    }
+    
+    func retrieveLocation(latitude: Double, longitude: Double) -> LocationData?{
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LocationData")
+        let latitudePredicate = NSPredicate(format: "latitude == %lf", latitude)
+        let longitudePredicate = NSPredicate(format: "longitude == %lf", longitude)
+        
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [latitudePredicate, longitudePredicate])
+        do {
+            if let locations = try? CoreDataManager.instance.managedObjectContext.fetch(fetchRequest) as? [LocationData] {
+                return locations[0]
+            }
+        }
+        return nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
