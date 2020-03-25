@@ -61,12 +61,6 @@
                                     <constraint firstAttribute="height" constant="198" id="Cjs-lr-m3M"/>
                                 </constraints>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwB-H5-zgA">
-                                <rect key="frame" x="20" y="823" width="374" height="39"/>
-                                <color key="backgroundColor" red="0.95697838068008423" green="0.96063560247421265" blue="0.96863096952438354" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="New Collection"/>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="79h-Sh-WCb">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
@@ -119,6 +113,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwB-H5-zgA">
+                                <rect key="frame" x="20" y="823" width="374" height="39"/>
+                                <color key="backgroundColor" red="0.95697838068008423" green="0.96063560247421265" blue="0.96863096952438354" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="New Collection"/>
+                                <connections>
+                                    <action selector="deletePhotos:" destination="Wyd-kD-1DL" eventType="touchUpInside" id="MEf-67-kYG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>

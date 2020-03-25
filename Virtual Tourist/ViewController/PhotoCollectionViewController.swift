@@ -104,7 +104,7 @@ extension PhotoCollectionViewController {
                         // no photos
                         self.managePhotosVisisbility(hide: true)
                     }
-                    newCollection.isEnabled = true
+                    self.newCollection.isEnabled = true
                     self.indicateMainProgress(hide: true)
                 }
             }
@@ -114,6 +114,16 @@ extension PhotoCollectionViewController {
     private func managePhotosVisisbility(hide: Bool) {
         collectionView.isHidden = hide
         noImages.isHidden = !hide
+    }
+    
+    @IBAction func deletePhotos(_ sender: Any) {
+        if let photos = fetchedResultsController.fetchedObjects, photos.count > 0 {
+            for photos in fetchedResultsController.fetchedObjects! {
+                CoreDataManager.instance.managedObjectContext.delete(photos)
+                CoreDataManager.instance.save()
+            }
+        }
+        getPhotos()
     }
     
 }
