@@ -15,7 +15,7 @@ class FlickrApi: BaseApi {
     static let SearchLonRange = (-180.0, 180.0)
     
     enum Endpoints {
-        static let base = "https://api.flickr.com/services/rest?api_key=\(FlickrApi.apiKey)&format=json&nojsoncallback=1&extras=url_q&per_page=24"
+        static let base = "https://api.flickr.com/services/rest?api_key=\(FlickrApi.apiKey)&format=json&nojsoncallback=1&extras=url_q&per_page=36"
         static let apiKeyParam = ""
         
         case search(Double, Double)

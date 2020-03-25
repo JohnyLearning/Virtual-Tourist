@@ -61,7 +61,7 @@
                                     <constraint firstAttribute="height" constant="198" id="Cjs-lr-m3M"/>
                                 </constraints>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwB-H5-zgA">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwB-H5-zgA">
                                 <rect key="frame" x="20" y="823" width="374" height="39"/>
                                 <color key="backgroundColor" red="0.95697838068008423" green="0.96063560247421265" blue="0.96863096952438354" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -91,13 +91,16 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fwu-RN-XpA">
-                                                    <rect key="frame" x="31.5" y="31.5" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fwu-RN-XpA">
+                                                    <rect key="frame" x="65" y="66" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="fwu-RN-XpA" firstAttribute="centerX" secondItem="PEy-3e-h7r" secondAttribute="centerX" id="0rX-Wu-Mnx"/>
+                                            <constraint firstItem="fwu-RN-XpA" firstAttribute="centerY" secondItem="PEy-3e-h7r" secondAttribute="centerY" id="9v8-5k-Nmb"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="activityIndicator" destination="fwu-RN-XpA" id="HAl-w8-2Dl"/>
                                             <outlet property="imageView" destination="rsH-oU-EpS" id="dfw-Ic-Ekg"/>
@@ -109,8 +112,8 @@
                                     <outlet property="delegate" destination="Wyd-kD-1DL" id="eMe-w5-xAB"/>
                                 </connections>
                             </collectionView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No images found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1So-do-q5f">
-                                <rect key="frame" x="20" y="294" width="374" height="521"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No images found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1So-do-q5f">
+                                <rect key="frame" x="0.0" y="187" width="414" height="521"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
@@ -139,6 +142,7 @@
                         <outlet property="collectionView" destination="xbj-iQ-IHa" id="1QB-8S-5TM"/>
                         <outlet property="mainActivityIndicator" destination="79h-Sh-WCb" id="Znh-vc-EbO"/>
                         <outlet property="mapView" destination="0uu-5z-Ph7" id="7SE-Vg-CIX"/>
+                        <outlet property="newCollection" destination="LwB-H5-zgA" id="2mL-AF-Upm"/>
                         <outlet property="noImages" destination="1So-do-q5f" id="dgA-pf-7eb"/>
                     </connections>
                 </viewController>

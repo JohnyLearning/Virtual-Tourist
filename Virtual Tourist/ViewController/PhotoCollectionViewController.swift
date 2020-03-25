@@ -24,6 +24,7 @@ class PhotoCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var noImages: UILabel!
+    @IBOutlet weak var newCollection: UIButton!
     
     var fetchedResultsController: NSFetchedResultsController<PhotoData>!
     
@@ -34,8 +35,12 @@ class PhotoCollectionViewController: UIViewController {
         mapView.delegate = self
         initMapLocation()
         setupDataController()
-        if let photos = locationData.photos, photos.count == 0 {
-            getPhotos()
+        if let photos = locationData.photos {
+            if photos.count == 0 {
+                getPhotos()
+            } else {
+                newCollection.isEnabled = true
+            }
         }
     }
     
@@ -99,6 +104,7 @@ extension PhotoCollectionViewController {
                         // no photos
                         self.managePhotosVisisbility(hide: true)
                     }
+                    newCollection.isEnabled = true
                     self.indicateMainProgress(hide: true)
                 }
             }
