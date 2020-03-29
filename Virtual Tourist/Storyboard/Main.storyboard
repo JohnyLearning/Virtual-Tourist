@@ -116,10 +116,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="New Collection"/>
                                 <connections>
-                                    <action selector="deleteAction:" destination="Wyd-kD-1DL" eventType="touchUpInside" id="O4p-yt-lNr"/>
+                                    <action selector="newCollection:" destination="Wyd-kD-1DL" eventType="touchUpInside" id="4LC-NF-rKq"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3pj-4x-ASf">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3pj-4x-ASf">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
@@ -143,8 +143,9 @@
                     <connections>
                         <outlet property="activityIndicator" destination="3pj-4x-ASf" id="Egt-4i-3f8"/>
                         <outlet property="collectionView" destination="xbj-iQ-IHa" id="xjM-Zw-n9k"/>
-                        <outlet property="labelStatus" destination="1So-do-q5f" id="MBM-wc-6sa"/>
                         <outlet property="mapView" destination="0uu-5z-Ph7" id="7SE-Vg-CIX"/>
+                        <outlet property="newCollection" destination="LwB-H5-zgA" id="JFd-iy-h3c"/>
+                        <outlet property="status" destination="1So-do-q5f" id="MBM-wc-6sa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QtH-IN-83A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
