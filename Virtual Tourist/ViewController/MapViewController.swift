@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     let defaults = UserDefaults.standard
     let locationManager = CLLocationManager()
@@ -19,8 +19,14 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mapView.delegate = self
+    }
+    
+    private func requestPermissions() {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,14 +134,15 @@ extension MapViewController: MKMapViewDelegate {
             let region = MKCoordinateRegion(center: center, span: span)
             mapView.setRegion(region, animated: true)
         } else {
-            let latitude = 54.5
-            let longitude = -3.5
+            let sourcelocation = self.locationManager.location?.coordinate
             let latitudeDelta = 10.0
             let longitudeDelta = 10.0
-            let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let span = MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
-            let region = MKCoordinateRegion(center: center, span: span)
-            mapView.setRegion(region, animated: true)
+            if let latitude = sourcelocation?.latitude, let longitude = sourcelocation?.longitude {
+                let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let span = MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+                let region = MKCoordinateRegion(center: center, span: span)
+                mapView.setRegion(region, animated: true)
+            }
         }
     }
     
