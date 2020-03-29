@@ -111,7 +111,7 @@ extension MapViewController: MKMapViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPhotos", let photoCollectionController = segue.destination as? PhotoCollectionViewController, sender is LocationData {
-            photoCollectionController.locationData = sender as? LocationData
+            photoCollectionController.location = sender as? LocationData
         }
     }
     

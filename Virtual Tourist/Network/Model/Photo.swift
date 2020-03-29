@@ -27,7 +27,7 @@ struct Photo: Codable {
     let ispublic: Int
     let isfriend: Int
     let isfamily: Int
-    let thumbnailUrl: String
+    let thumbnailUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case id

@@ -14,6 +14,8 @@ class FlickrApi: BaseApi {
     static let SearchLatRange = (-90.0, 90.0)
     static let SearchLonRange = (-180.0, 180.0)
     
+    private static var tasks: [String: URLSessionDataTask] = [:]
+    
     enum Endpoints {
         static let base = "https://api.flickr.com/services/rest?api_key=\(FlickrApi.apiKey)&format=json&nojsoncallback=1&extras=url_q&per_page=36"
         static let apiKeyParam = ""
@@ -65,6 +67,17 @@ class FlickrApi: BaseApi {
             }
         }
         task.resume()
+        
+        if tasks[imageUrl] == nil {
+           tasks[imageUrl] = task
+        }
+    }
+    
+    class func cancelDownload(_ imageUrl: String) {
+        tasks[imageUrl]?.cancel()
+        if tasks.removeValue(forKey: imageUrl) != nil {
+            print("\(#function) task canceled: \(imageUrl)")
+        }
     }
     
 }

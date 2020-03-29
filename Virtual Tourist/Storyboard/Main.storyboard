@@ -61,9 +61,6 @@
                                     <constraint firstAttribute="height" constant="198" id="Cjs-lr-m3M"/>
                                 </constraints>
                             </mapView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="79h-Sh-WCb">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xbj-iQ-IHa">
                                 <rect key="frame" x="0.0" y="294" width="414" height="521"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -119,9 +116,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="New Collection"/>
                                 <connections>
-                                    <action selector="deletePhotos:" destination="Wyd-kD-1DL" eventType="touchUpInside" id="MEf-67-kYG"/>
+                                    <action selector="deleteAction:" destination="Wyd-kD-1DL" eventType="touchUpInside" id="O4p-yt-lNr"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3pj-4x-ASf">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -131,8 +132,6 @@
                             <constraint firstItem="xbj-iQ-IHa" firstAttribute="top" secondItem="0uu-5z-Ph7" secondAttribute="bottom" constant="8" id="Ja7-tV-kks"/>
                             <constraint firstItem="0uu-5z-Ph7" firstAttribute="trailing" secondItem="o1J-GL-ToH" secondAttribute="trailing" id="LZ9-kr-jXb"/>
                             <constraint firstItem="LwB-H5-zgA" firstAttribute="leading" secondItem="o1J-GL-ToH" secondAttribute="leading" constant="20" id="QBv-p3-cX6"/>
-                            <constraint firstItem="79h-Sh-WCb" firstAttribute="centerY" secondItem="4IU-JV-guL" secondAttribute="centerY" id="U28-bx-qM0"/>
-                            <constraint firstItem="79h-Sh-WCb" firstAttribute="centerX" secondItem="4IU-JV-guL" secondAttribute="centerX" id="Xwt-SO-3pI"/>
                             <constraint firstItem="0uu-5z-Ph7" firstAttribute="leading" secondItem="o1J-GL-ToH" secondAttribute="leading" id="cJj-Kx-uhP"/>
                             <constraint firstItem="o1J-GL-ToH" firstAttribute="bottom" secondItem="LwB-H5-zgA" secondAttribute="bottom" id="g3q-2a-S84"/>
                             <constraint firstItem="o1J-GL-ToH" firstAttribute="trailing" secondItem="LwB-H5-zgA" secondAttribute="trailing" constant="20" id="hZ0-uX-q4V"/>
@@ -142,11 +141,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="29N-s7-zZe"/>
                     <connections>
-                        <outlet property="collectionView" destination="xbj-iQ-IHa" id="1QB-8S-5TM"/>
-                        <outlet property="mainActivityIndicator" destination="79h-Sh-WCb" id="Znh-vc-EbO"/>
+                        <outlet property="activityIndicator" destination="3pj-4x-ASf" id="Egt-4i-3f8"/>
+                        <outlet property="collectionView" destination="xbj-iQ-IHa" id="xjM-Zw-n9k"/>
+                        <outlet property="labelStatus" destination="1So-do-q5f" id="MBM-wc-6sa"/>
                         <outlet property="mapView" destination="0uu-5z-Ph7" id="7SE-Vg-CIX"/>
-                        <outlet property="newCollection" destination="LwB-H5-zgA" id="2mL-AF-Upm"/>
-                        <outlet property="noImages" destination="1So-do-q5f" id="dgA-pf-7eb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QtH-IN-83A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
