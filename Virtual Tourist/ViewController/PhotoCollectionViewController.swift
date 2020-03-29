@@ -38,7 +38,7 @@ class PhotoCollectionViewController: UIViewController {
             return
         }
         initMapLocation()
-        setupFetchedResultControllerWith(location)
+        setupFetchedResults(location)
         
         if let photos = location.photos, photos.count == 0 {
             getPhotos(location)
@@ -51,27 +51,6 @@ class PhotoCollectionViewController: UIViewController {
         }
         CoreDataManager.instance.save()
         getPhotos(location!)
-    }
-    
-    private func setupFetchedResultControllerWith(_ pin: LocationData) {
-        
-        let fr = NSFetchRequest<PhotoData>(entityName: "PhotoData")
-        fr.sortDescriptors = []
-        fr.predicate = NSPredicate(format: "location == %@", argumentArray: [pin])
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        
-        var error: NSError?
-        do {
-            try fetchedResultsController.performFetch()
-        } catch let error1 as NSError {
-            error = error1
-        }
-        
-        if let error = error {
-            print("\(#function) Error performing initial fetch: \(error)")
-        }
     }
     
     private func getPhotos(_ pin: LocationData) {

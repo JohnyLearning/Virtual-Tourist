@@ -11,7 +11,7 @@ import MapKit
 
 extension PhotoCollectionViewController: MKMapViewDelegate {
     
-    func initMapLocation() {
+    internal func initMapLocation() {
         let mapLocation = CLLocationCoordinate2D(latitude: location!.latitude, longitude: location!.longitude)
         let center = CLLocationCoordinate2D(latitude: mapLocation.latitude, longitude: mapLocation.longitude)
         let annotation = MKPointAnnotation()
@@ -28,16 +28,16 @@ extension PhotoCollectionViewController: MKMapViewDelegate {
         
         let reuseId = "location"
         
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        var locationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = false
-            pinView!.pinTintColor = .red
+        if locationView == nil {
+            locationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            locationView!.canShowCallout = false
+            locationView!.pinTintColor = .red
         } else {
-            pinView!.annotation = annotation
+            locationView!.annotation = annotation
         }
         
-        return pinView
+        return locationView
     }
 }

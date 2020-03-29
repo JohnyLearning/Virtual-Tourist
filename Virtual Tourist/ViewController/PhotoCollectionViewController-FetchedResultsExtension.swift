@@ -11,6 +11,27 @@ import CoreData
 
 extension PhotoCollectionViewController: NSFetchedResultsControllerDelegate {
     
+    internal func setupFetchedResults(_ location: LocationData) {
+        
+        let fr = NSFetchRequest<PhotoData>(entityName: "PhotoData")
+        fr.sortDescriptors = []
+        fr.predicate = NSPredicate(format: "location == %@", argumentArray: [location])
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        var error: NSError?
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error1 as NSError {
+            error = error1
+        }
+        
+        if let error = error {
+            print("\(#function) Error performing initial fetch: \(error)")
+        }
+    }
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         addedIndices = [IndexPath]()
         removedIndices = [IndexPath]()
