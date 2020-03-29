@@ -53,6 +53,10 @@ class PhotoCollectionViewController: UIViewController {
             CoreDataManager.instance.managedObjectContext.delete(photos)
         }
         CoreDataManager.instance.save()
+        if let location = self.location {
+            location.pageIndex += 1
+            CoreDataManager.instance.save()
+        }
         getPhotos()
     }
     
@@ -62,8 +66,9 @@ class PhotoCollectionViewController: UIViewController {
             let lon = Double(location.longitude)
             
             activityIndicator.startAnimating()
-            
-            FlickrApi.searchPhotos(longitude: lon, latitude: lat) { (data, error) in
+            // get next page index based on location
+            let pageIndex = location.pageIndex
+            FlickrApi.searchPhotos(longitude: lon, latitude: lat, pageIndex: Int(pageIndex)) { (data, error) in
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.newCollection.isEnabled = true

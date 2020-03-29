@@ -3,6 +3,7 @@
     <entity name="LocationData" representedClassName="LocationData" syncable="YES" codeGenerationType="class">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="pageIndex" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PhotoData" inverseName="location" inverseEntity="PhotoData"/>
     </entity>
@@ -13,7 +14,7 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationData" inverseName="photos" inverseEntity="LocationData"/>
     </entity>
     <elements>
-        <element name="LocationData" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="LocationData" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="PhotoData" positionX="-54" positionY="18" width="128" height="103"/>
     </elements>
 </model>

@@ -60,6 +60,7 @@ class MapViewController: UIViewController {
         let location = LocationData(context: CoreDataManager.instance.managedObjectContext)
         location.latitude = coordinate.latitude
         location.longitude = coordinate.longitude
+        location.pageIndex = 1
         CoreDataManager.instance.save()
     }
     
@@ -95,7 +96,7 @@ extension MapViewController: MKMapViewDelegate {
         }
     }
     
-    func retrieveLocation(latitude: Double, longitude: Double) -> LocationData?{
+    func retrieveLocation(latitude: Double, longitude: Double) -> LocationData? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LocationData")
         let latitudePredicate = NSPredicate(format: "latitude == %lf", latitude)
         let longitudePredicate = NSPredicate(format: "longitude == %lf", longitude)

@@ -20,12 +20,12 @@ class FlickrApi: BaseApi {
         static let base = "https://api.flickr.com/services/rest?api_key=\(FlickrApi.apiKey)&format=json&nojsoncallback=1&extras=url_q&per_page=36"
         static let apiKeyParam = ""
         
-        case search(Double, Double)
+        case search(Double, Double, Int)
         case downloadImage(String)
         
         var stringValue: String {
             switch self {
-            case .search(let longitude, let latitude): return Endpoints.base + Endpoints.apiKeyParam + "&method=flickr.photos.search&bbox=\(bboxString(longitude: longitude, latitude: latitude))"
+            case .search(let longitude, let latitude, let pageIndex): return Endpoints.base + Endpoints.apiKeyParam + "&method=flickr.photos.search&bbox=\(bboxString(longitude: longitude, latitude: latitude))&page=\(pageIndex)"
             case .downloadImage(let url): return url
             }
         }
@@ -44,8 +44,8 @@ class FlickrApi: BaseApi {
         return "\(minLongitude),\(minLatitude),\(maxLongitude),\(maxLatitude)"
     }
     
-    class func searchPhotos(longitude: Double, latitude: Double, completion: @escaping (SearchResponse?, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.search(longitude, latitude).url, responseType: SearchResponse.self) { response, error in
+    class func searchPhotos(longitude: Double, latitude: Double, pageIndex: Int, completion: @escaping (SearchResponse?, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.search(longitude, latitude, pageIndex).url, responseType: SearchResponse.self) { response, error in
             if let response = response {
                 completion(response, nil)
             } else {
