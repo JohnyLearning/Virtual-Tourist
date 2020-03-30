@@ -36,14 +36,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func getAnnotations() {
+        if let annotations = mapView?.annotations {
+            mapView.removeAnnotations(annotations)
+        }
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LocationData")
         do {
             if let mapLocations = try? CoreDataManager.instance.managedObjectContext.fetch(fetchRequest) as? [LocationData] {
                 for location in mapLocations {
-                    let location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = location
-                    mapView.addAnnotation(annotation)
+                    if let photos = location.photos, photos.count > 0 {
+                        let locationCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = locationCoordinate
+                        mapView.addAnnotation(annotation)
+                    } else {
+                        CoreDataManager.instance.managedObjectContext.delete(location)
+                    }
                 }
             }
         }

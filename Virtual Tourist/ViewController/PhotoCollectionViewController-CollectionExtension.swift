@@ -42,6 +42,11 @@ extension PhotoCollectionViewController: UICollectionViewDataSource, UICollectio
         let photoToDelete = fetchedResultsController.object(at: indexPath)
         CoreDataManager.instance.managedObjectContext.delete(photoToDelete)
         CoreDataManager.instance.save()
+        guard let photos = location?.photos, photos.count > 0 else {
+            updateStatus("No more images found.")
+            return
+        }
+        hideStatus()
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying: UICollectionViewCell, forItemAt: IndexPath) {

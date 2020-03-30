@@ -83,13 +83,19 @@ class PhotoCollectionViewController: UIViewController {
                     self.updateStatus("Photos retrieval failed")
                 }
             }
+            hideStatus()
         }
     }
     
-    private func updateStatus(_ text: String) {
+    internal func updateStatus(_ text: String) {
         DispatchQueue.main.async {
             self.status.text = text
+            self.status.isHidden = false
         }
+    }
+    
+    internal func hideStatus() {
+        self.status.isHidden = true
     }
     
     private func savePhotos(_ photos: [Photo]) {
